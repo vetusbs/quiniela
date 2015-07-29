@@ -34,6 +34,9 @@ class FootballDaysController extends AppController
         $footballDay = $this->FootballDays->get($id, [
             'contain' => ['Matches', 'Matches.Locals', 'Matches.Visitors']
         ]);
+        $this->__setTomorrow($id);
+        $this->__setYesterday($id);
+         
         $this->set('footballDay', $footballDay);
         $this->set('_serialize', ['footballDay']);
     }
@@ -45,12 +48,32 @@ class FootballDaysController extends AppController
     		->order(['id' => 'DESC'])
     		->first();
     	
+		$this->__setTomorrow($today->id);
+		$this->__setYesterday($today->id);
+    	
     	$footballDay = $this->FootballDays->get($today->id, [
     			'contain' => ['Matches', 'Matches.Locals', 'Matches.Visitors']
     	]);
+    	
     	$this->set('footballDay', $footballDay);
     	$this->set('_serialize', ['footballDay']);
     	$this->view = "view";
+    }
+    
+    function __setYesterday($id) {
+    	$yesterday = $this->FootballDays->find('all')
+    	->order(['id' => 'DESC'])
+    	->where(['id <' => $id])
+    	->first();
+    	$this->set('yesterday', $yesterday);
+    }
+    
+    function __setTomorrow($id) {
+    	$tomorrow = $this->FootballDays->find('all')
+    	->order(['id' => 'DESC'])
+    	->where(['id >' => $id])
+    	->first();
+    	$this->set('tomorrow', $tomorrow);
     }
 
     /**

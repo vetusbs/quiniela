@@ -58,7 +58,7 @@ class MatchesController extends AppController
                 $this->Flash->error(__('The match could not be saved. Please, try again.'));
             }
         }
-        $teams = $this->Matches->Teams->find('list', ['limit' => 200]);
+        $teams = $this->Matches->Visitors->find('list', ['limit' => 200]);
         $footballDays = $this->Matches->FootballDays->find('list', ['limit' => 200]);
         $this->set(compact('match', 'teams', 'footballDays'));
         $this->set('_serialize', ['match']);
