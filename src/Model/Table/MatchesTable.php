@@ -97,12 +97,12 @@ class MatchesTable extends Table
     			'local' => [
     					'table' => 'teams',
     					'type' => 'LEFT',
-    					'conditions' => 'local.id = matches.local_id',
+    					'conditions' => 'local.id = Matches.local_id',
     			],
     			'visitor' => [
     					'table' => 'teams',
     					'type' => 'LEFT',
-    					'conditions' => 'visitor.id = matches.visitor_id',
+    					'conditions' => 'visitor.id = Matches.visitor_id',
     			]
     	])
     	->where(['football_day_id' => $footballDay])
