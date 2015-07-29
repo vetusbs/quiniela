@@ -28,7 +28,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('cake.css') ?>
-
+    <?= $this->Html->css('custom.css') ?>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
@@ -44,7 +45,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             
         </div>
     </header>
-    <div id="container">
+    <div id="container" class="column large-10 large-push-1 medium-10 medium-push-1 small-12">
 
         <div id="content">
             <?= $this->Flash->render() ?>

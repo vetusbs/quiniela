@@ -9,6 +9,7 @@ html {
 	font-family: sans-serif; /* 1 */
 	-ms-text-size-adjust: 100%; /* 2 */
 	-webkit-text-size-adjust: 100%; /* 2 */
+	background : url("../img/fondo_loterianavidad.jpg") repeat-x scroll 0 0 #ffffff;
 }
 
 /**
@@ -424,7 +425,6 @@ html, body {
 }
 
 body {
-	background: #fff;
 	color: #222;
 	padding: 0;
 	margin: 0;
@@ -6658,7 +6658,7 @@ table tfoot tr th, table tfoot tr td {
 }
 
 table tr th, table tr td {
-	padding: 0.5625rem 0.625rem;
+	padding: 0.15rem 0.15rem;
 	font-size: 0.875rem;
 	color: #222;
 	text-align: left

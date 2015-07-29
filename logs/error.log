@@ -3346,3 +3346,84 @@ Stack Trace:
 #1 {main}
 
 
+2015-07-29 20:33:05 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Img could not be found.
+Exception Attributes: array (
+  'class' => 'Img',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /quiniela/img/recipes/6.jpg
+Stack Trace:
+#0 /Applications/MAMP/htdocs/quiniela/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2015-07-29 20:33:17 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Img could not be found.
+Exception Attributes: array (
+  'class' => 'Img',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /quiniela/img/recipes/6.jpg
+Stack Trace:
+#0 /Applications/MAMP/htdocs/quiniela/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2015-07-29 20:33:24 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Img could not be found.
+Exception Attributes: array (
+  'class' => 'Img',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /quiniela/img/recipes/6.jpg
+Stack Trace:
+#0 /Applications/MAMP/htdocs/quiniela/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2015-07-29 20:33:44 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Img could not be found.
+Exception Attributes: array (
+  'class' => 'Img',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /quiniela/img/recipes/6.jpg
+Stack Trace:
+#0 /Applications/MAMP/htdocs/quiniela/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2015-07-29 20:35:40 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Img could not be found.
+Exception Attributes: array (
+  'class' => 'Img',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /quiniela/img/recipes/6.jpg
+Stack Trace:
+#0 /Applications/MAMP/htdocs/quiniela/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2015-07-29 20:55:45 Error: Fatal Error (4): syntax error, unexpected '?>' in [/Applications/MAMP/htdocs/quiniela/src/Template/FootballDays/view.ctp, line 4]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 192
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 91
+[main] - [internal], line ??
+
+
+
+2015-07-29 20:55:45 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '?>'
+Request URL: /quiniela/football_days/today/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/quiniela/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(91): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', '/Applications/M...', 4)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
