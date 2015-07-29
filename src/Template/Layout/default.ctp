@@ -38,6 +38,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <header>
         <div class="header-title">
             <span><?= $this->fetch('title') ?></span>
+                    <div><?php echo __("Penya quinialistica LC");?></div>
         </div>
         <div class="header-help">
             <?php echo $this->Html->image('logoQuinielaGrande.png', array('alt' => 'CakePHP'));?>
