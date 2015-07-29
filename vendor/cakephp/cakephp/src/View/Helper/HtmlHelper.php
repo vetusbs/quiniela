@@ -823,6 +823,7 @@ class HtmlHelper extends Helper
 
         $templater = $this->templater();
         $image = $templater->format('image', [
+            'url' => $path,
             'attrs' => $templater->formatAttributes($options),
         ]);
 
