@@ -1,11 +1,8 @@
 <div class="actions columns large-2 medium-3">
     <h3><?= __('Actions') ?></h3>
-    <ul class="side-nav">
-        <li><?= $this->Html->link(__('List Match Bets'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Matches'), ['controller' => 'Matches', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Match'), ['controller' => 'Matches', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Bets'), ['controller' => 'Bets', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Bet'), ['controller' => 'Bets', 'action' => 'add']) ?></li>
+ 	<ul class="side-nav">
+    	<li><?= $this->Html->link(__('Apostar'), ['controller' => 'MatchBets', 'action' => 'add', $footballDayId])?></li>    
+        <li><?= $this->Html->link(__('Apostes usuaris'), ['controller' => 'MatchBets', 'action' => 'weeklyBets', $footballDayId]) ?></li>
     </ul>
 </div>
 <div class="matchBets form large-10 medium-9 columns">
@@ -31,9 +28,35 @@
             echo $this->Form->input($counter.'.user_id', array('type'=>'hidden', 'value'=>$userId));
             echo '</td>';
             echo '<td>';
-            echo $this->Form->checkbox($counter.'.1', array('hiddenField' => false));
-            echo $this->Form->checkbox($counter.'.x', array('hiddenField' => false));
-            echo $this->Form->checkbox($counter.'.2', array('hiddenField' => false));
+            if ($counter < 14) {
+            	echo $this->Form->checkbox($counter.'.1', array('hiddenField' => false));
+            	echo $this->Form->checkbox($counter.'.x', array('hiddenField' => false));
+            	echo $this->Form->checkbox($counter.'.2', array('hiddenField' => false));
+            } else {
+            	echo '<div class="inline_labels">'; 
+				echo $this->Form->radio(
+				    $counter.'.goals_local',
+				    [
+				        ['value' => '0', 'text' => '0', 'style' => 'color:red;'],
+				        ['value' => '1', 'text' => '1', 'style' => 'color:blue;'],
+				        ['value' => '2', 'text' => '2', 'style' => 'color:green;'],
+				    	['value' => '3', 'text' => '+3', 'style' => 'color:green;'],	
+				    ]
+				); 
+				echo '</div>';
+				
+				echo '<div class="inline_labels">';
+				echo $this->Form->radio(
+				    $counter.'.goals_visitor',
+				    [
+				        ['value' => '0', 'text' => '0', 'style' => 'color:red;'],
+				        ['value' => '1', 'text' => '1', 'style' => 'color:blue;'],
+				        ['value' => '2', 'text' => '2', 'style' => 'color:green;'],
+				    	['value' => '3', 'text' => '+3', 'style' => 'color:green;'],	
+				    ]
+				); 
+				echo '</div>';
+            }
             echo '</td>';
             echo '</tr>';
             $counter++;

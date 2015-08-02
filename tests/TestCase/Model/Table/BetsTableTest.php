@@ -18,7 +18,12 @@ class BetsTableTest extends TestCase
      */
     public $fixtures = [
         'app.bets',
-        'app.users'
+        'app.users',
+        'app.match_bets',
+        'app.matches',
+        'app.visitors',
+        'app.locals',
+        'app.football_days'
     ];
 
     /**

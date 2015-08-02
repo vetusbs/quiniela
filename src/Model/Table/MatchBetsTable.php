@@ -31,12 +31,8 @@ class MatchBetsTable extends Table
         $this->belongsTo('Matches', [
             'foreignKey' => 'match_id'
         ]);
-        $this->belongsTo('FootballDays', [
-            'foreignKey' => 'football_day_id'
-        ]);
-        
-        $this->belongsTo('Users', [
-        		'foreignKey' => 'user_id'
+        $this->belongsTo('Bets', [
+            'foreignKey' => 'bet_id'
         ]);
     }
 
@@ -76,26 +72,42 @@ class MatchBetsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['match_id'], 'Matches'));
-        $rules->add($rules->existsIn(['user_id'], 'Users'));
-        $rules->add($rules->existsIn(['football_day_id'], 'FootballDays'));
+        $rules->add($rules->existsIn(['bet_id'], 'Bets'));
         return $rules;
     }
     
     public function getAllBetsBy($footballDay) {
+    	    	
+    	$subQuery = $this->Bets->find('all', array(
+    			'fields' => array('id' => 'MAX(bets.id)'),
+    			))
+    		->where(['football_day_id' => $footballDay])
+    		->group('user_id')
+    		->toArray();
+    	$ids = array();
+    	foreach ($subQuery as $value) {
+    		$ids[$value->id] = $value->id;
+    	}
+    	$fields = array('bet.user_id', 'user.id', 'm.id', 'sign', 'user.name', 'm.id', 'goals_local', 'goals_visitor');
+
     	
-    	$fields = array('user_id', 'm.id', 'sign', 'user.name', 'm.id', 'goals_local', 'goals_visitor');
     	
     	$query = $this->find('all', ['fields' => $fields])
     	->join([
+    			'bet' => [
+    					'table' => 'bets',
+    					'type' => 'LEFT',
+    					'conditions' => 'bet.id = bet_id',
+    			],
     			'user' => [
     					'table' => 'users',
     					'type' => 'LEFT',
-    					'conditions' => 'user.id = user_id',
+    					'conditions' => 'user.id = bet.user_id',
     			],
     			'fd' => [
     					'table' => 'football_days',
     					'type' => 'LEFT',
-    					'conditions' => 'fd.id = football_day_id'
+    					'conditions' => 'fd.id = bet.football_day_id'
     			],
     			'm' => [
     					'table' => 'matches',
@@ -112,9 +124,11 @@ class MatchBetsTable extends Table
     					'type'  => 'left',
     					'conditions' => 'visitor.id = m.visitor_id'
     			]
+    			
     	])
-    	->where(['fd.id' => $footballDay])
-    	->order('user_id,matchBets.football_day_id, m.number');
+    	->where(['fd.id' => $footballDay, 'bet.id in' => $ids])
+    	->group('m.id, bet.user_id')
+    	->order('user_id,bet.football_day_id, m.number');
     	 
     	return $query->toArray();
     }

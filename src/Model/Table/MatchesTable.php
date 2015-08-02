@@ -86,7 +86,7 @@ class MatchesTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['local_id'], 'Locals'));
-        $rules->add($rules->existsIn(['visitor_id'], 'Visitors	'));
+        $rules->add($rules->existsIn(['visitor_id'], 'Visitors'));
         $rules->add($rules->existsIn(['football_day_id'], 'FootballDays'));
         return $rules;
     }

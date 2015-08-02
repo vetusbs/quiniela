@@ -13,9 +13,8 @@
     <fieldset>
         <legend><?= __('Add Bet') ?></legend>
         <?php
-            echo $this->Form->input('user_id', ['options' => $users, 'empty' => true]);
-            echo $this->Form->input('date');
-            echo $this->Form->input('football_day_id', ['options' => $footballDays, 'empty' => true]);
+            echo $this->Form->input('user_id', ['options' => $users]);
+            echo $this->Form->input('football_day_id', ['options' => $footballDays]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

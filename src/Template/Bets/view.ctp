@@ -25,8 +25,6 @@
             <p><?= $this->Number->format($bet->id) ?></p>
         </div>
         <div class="large-2 columns dates end">
-            <h6 class="subheader"><?= __('Date') ?></h6>
-            <p><?= h($bet->date) ?></p>
             <h6 class="subheader"><?= __('Created') ?></h6>
             <p><?= h($bet->created) ?></p>
             <h6 class="subheader"><?= __('Modified') ?></h6>

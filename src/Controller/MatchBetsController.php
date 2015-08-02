@@ -12,6 +12,15 @@ use Cake\ORM\TableRegistry;
 class MatchBetsController extends AppController
 {
 
+	public function isAuthorized($user) {
+		if (in_array ( $this->request->action, [
+				'weeklyBets', 'add'
+		] )) {
+			return true;
+		}
+		return parent::isAuthorized ( $user );
+	}
+	
     /**
      * Index method
      *
@@ -51,7 +60,12 @@ class MatchBetsController extends AppController
     {
         if ($this->request->is('post')) {
         	
-        	for ($i = 0; $i < count($this->request->data); $i++) {
+        	$bet = $this->MatchBets->Bets->newEntity();
+        	$bet->user_id = $this->Auth->user('id');
+        	$bet->football_day_id = $footballDayId;
+        	$bet = $this->MatchBets->Bets->save($bet);
+        	
+        	for ($i = 0; $i < count(($this->request->data)); $i++) {        		
         		$record = $this->request->data[$i];
         		$sign = '';
         		if (isset($record['1'])) {
@@ -65,9 +79,10 @@ class MatchBetsController extends AppController
         		}
         		$this->request->data[$i]['user_id'] = $this->Auth->user('id');
         		$this->request->data[$i]['sign'] = $sign;
-        		$this->request->data[$i]['football_day_id'] = $footballDayId;
+        		$this->request->data[$i]['bet_id'] = $bet->id;
         	}
         	
+
         	$matchBets = $this->MatchBets->newEntities($this->request->data);
         	$database = $this->MatchBets;
         	$result = $this->MatchBets->connection()->transactional(function () use ($database, $matchBets) {
@@ -78,7 +93,7 @@ class MatchBetsController extends AppController
         	});
             if ($result) {
                 $this->Flash->success(__('The match bet has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'weeklyBets', $footballDayId]);
             } else {
                 $this->Flash->error(__('The match bet could not be saved. Please, try again.'));
             }
@@ -86,6 +101,7 @@ class MatchBetsController extends AppController
         $matches = TableRegistry::get('Matches');
 		$data = $matches->getMatchesByFootballDay($footballDayId);
 
+		$this->set('footballDayId',$footballDayId);
 		$this->set('userId', $this->Auth->user('id'));
         $this->set('matches', $data);
         $this->set(compact('matchBet'));
@@ -133,6 +149,8 @@ class MatchBetsController extends AppController
     	$matchesTable = TableRegistry::get('MatchBets');
     	$bets = $matchesTable->getAllBetsBy($footballDayId);
     	
+    	
+    	
     	$matches = TableRegistry::get('Matches');
     	$matches = $matches->getMatchesByFootballDay($footballDayId);
     	
@@ -140,15 +158,14 @@ class MatchBetsController extends AppController
     	$user = array();
     	$user_id = null;
     	foreach ($bets as $bet) {
-    		$user_id = $bet['user_id'];
+    		$user_id = $bet['bet']['user_id'];
     		if (!isset($user[$user_id])) {
     			$user[$user_id] = array();
     		}
-    		$user[$user_id][$bet['m.id']] = $bet;
     		$users[$user_id] = array('id' => $user_id, 'name' => $bet['user']['name']);
     	}
     	
-    	$this->set("user", $user);
+    	$this->set('footballDayId',$footballDayId);
     	 
     	$this->set("users", $users);
     	$this->set("bets", $bets);

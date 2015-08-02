@@ -6,6 +6,9 @@
 <div class="row">
 	<div class="large-4 medium-3 columns">
 		<div class="row">
+			<h2 class="column-6">
+		<?php echo  __('Jornada') ?>-<?= h($footballDay->number);?>
+		</h2>
 		<?php
 		echo $this->Html->link ( '<i class="fa fa-pencil-square-o"></i>&nbsp;', [ 
 				'controller' => 'FootballDays',
@@ -19,18 +22,12 @@
 		</div>
 		<h5><?= h($footballDay->date) ?></h5>
 	</div>
+	<div class="large-4 medium-3 column">
+		<h3><?= $this->Html->link(__('Apostar'), ['controller' => 'MatchBets', 'action' => 'add', $footballDay->id])?></h3>
+	</div>
 </div>
 <div class="related row">
-
-<div class="actions columns large-2 medium-3">
-    <h3><?= __('MENU') ?></h3>
-    <ul class="side-nav">
-    	<li><?= $this->Html->link(__('Apostar'), ['controller' => 'MatchBets', 'action' => 'add', $footballDay->id])?></li>    
-        <li><?= $this->Html->link(__('Apostes usuaris'), ['controller' => 'MatchBets', 'action' => 'weeklyBets', $footballDay->id ]) ?></li>
-    </ul>
-</div>
-
-	<div class="column large-10 medium-9">
+	<div class="column large-12">
 			<?php
 				if (isset($yesterday)) {
 					echo $this->Html->link(__('Anterior'), ['controller' => 'FootballDays', 'action' => 'view', $yesterday->id]);

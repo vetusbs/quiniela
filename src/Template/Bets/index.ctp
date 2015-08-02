@@ -13,10 +13,9 @@
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('id') ?></th>
-            <th><?= $this->Paginator->sort('user_id') ?></th>
-            <th><?= $this->Paginator->sort('date') ?></th>
             <th><?= $this->Paginator->sort('created') ?></th>
             <th><?= $this->Paginator->sort('modified') ?></th>
+            <th><?= $this->Paginator->sort('user_id') ?></th>
             <th><?= $this->Paginator->sort('football_day_id') ?></th>
             <th class="actions"><?= __('Actions') ?></th>
         </tr>
@@ -25,12 +24,11 @@
     <?php foreach ($bets as $bet): ?>
         <tr>
             <td><?= $this->Number->format($bet->id) ?></td>
+            <td><?= h($bet->created) ?></td>
+            <td><?= h($bet->modified) ?></td>
             <td>
                 <?= $bet->has('user') ? $this->Html->link($bet->user->name, ['controller' => 'Users', 'action' => 'view', $bet->user->id]) : '' ?>
             </td>
-            <td><?= h($bet->date) ?></td>
-            <td><?= h($bet->created) ?></td>
-            <td><?= h($bet->modified) ?></td>
             <td>
                 <?= $bet->has('football_day') ? $this->Html->link($bet->football_day->id, ['controller' => 'FootballDays', 'action' => 'view', $bet->football_day->id]) : '' ?>
             </td>

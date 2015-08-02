@@ -3,3 +3,25 @@
 	background-color: rgba(244, 234, 231, 0.8);
 	margin-top: 25px;;
 }
+
+th.rotate {
+  /* Something you can count on */
+  height: 140px;
+  white-space: nowrap;
+}
+
+th.rotate > div {
+  transform: 
+    translate(0px, 51px)
+
+    rotate(315deg);
+  width: 30px;
+}
+th.rotate > div > span {
+  border-bottom: 1px solid #ccc;
+  padding: 5px 10px;
+}
+.inline_labels label
+{
+    display: inline-block;
+}

@@ -16,7 +16,7 @@ class UsersController extends AppController
 	{
 	
 		// The owner of an article can edit and delete it
-		if (in_array($this->request->action, ['edit', 'delete'])) {
+		if (in_array($this->request->action, ['edit', 'delete','login'])) {
 			$paramUserId = (int)$this->request->params['pass'][0];
 			if ($user['id'] == $paramUserId) {
 				return true;
@@ -27,9 +27,8 @@ class UsersController extends AppController
 	}
 	
 	public function beforeFilter(Event $event)
-	{
-		parent::beforeFilter($event);
-		$this->Auth->allow('add','logout', 'login');
+	{		
+		$this->Auth->allow(array('add','logout', 'login'));
 	}
 	
 	public function login()

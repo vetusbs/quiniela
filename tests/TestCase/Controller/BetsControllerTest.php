@@ -18,10 +18,11 @@ class BetsControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.bets',
         'app.users',
-        'app.football_days',
+        'app.match_bets',
         'app.matches',
-        'app.teams',
-        'app.match_bets'
+        'app.visitors',
+        'app.locals',
+        'app.football_days'
     ];
 
     /**

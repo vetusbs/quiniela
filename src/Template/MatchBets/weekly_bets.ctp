@@ -1,21 +1,18 @@
 <div class="actions columns large-2 medium-3">
     <h3><?= __('Actions') ?></h3>
-    <ul class="side-nav">
-        <li><?= $this->Html->link(__('List Match Bets'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Matches'), ['controller' => 'Matches', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Match'), ['controller' => 'Matches', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Bets'), ['controller' => 'Bets', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Bet'), ['controller' => 'Bets', 'action' => 'add']) ?></li>
+ 	<ul class="side-nav">
+    	<li><?= $this->Html->link(__('Apostar'), ['controller' => 'MatchBets', 'action' => 'add', $footballDayId]) ?></li>    
+        <li><?= $this->Html->link(__('Apostes usuaris'), ['controller' => 'MatchBets', 'action' => 'weeklyBets', $footballDayId]) ?></li>
     </ul>
 </div>
 <div class="matchBets form large-10 medium-9 columns">
         <table>
          <tr>
-		    <th>Firstname</th>
+		    <th></th>
 		    <?php 
-		    
 		    foreach ($users as $user) {
-		    	echo '<th>'.$user['name'].'</th>';
+		    	//echo '<th>'.$user['name'].'</th>';
+		    	echo '<th class="rotate"><div><span>'.$user['name'].'</span></div></th>';		    	 
 		    }
 		    ?>
 		  </tr>
@@ -37,8 +34,16 @@
             	 
             	foreach ($bets as $bet) {
             		
-		    		if ($bet['user_id']==$user['id'] && $bet['m']['id']==$match->id) {
-		    			echo $bet['sign'];
+		    		if ($bet['bet']['user_id']==$user['id'] && $bet['m']['id']==$match->id) {
+		    			if ($counter < 14) {
+		    				echo $bet['sign'];
+		    				break;
+		    			} else {
+		    				echo $bet['goals_local'];
+		    				echo $bet['goals_visitor'];
+		    				
+		    				break;
+		    			}
 		    		}
 		    	}
 		    	echo '</td>';

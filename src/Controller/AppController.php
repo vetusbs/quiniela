@@ -41,7 +41,10 @@ class AppController extends Controller
 		parent::initialize();
 		$this->loadComponent('Flash');
 		$this->loadComponent('Auth', [
-				'unauthorizedRedirect' => 'http://google.es',
+				'unauthorizedRedirect' => [
+						'controller' => 'Users',
+						'action' => 'login'
+				],
 				'authorize' => ['Controller'], // Added this line
 				'loginRedirect' => [
 						'controller' => 'FootballDays',
@@ -49,8 +52,7 @@ class AppController extends Controller
 				],
 				'logoutRedirect' => [
 						'controller' => 'Users',
-						'action' => 'add',
-						'home'
+						'action' => 'login',
 				],
 				'authenticate' => [
 						'Form' => [
@@ -65,7 +67,7 @@ class AppController extends Controller
 	
 	public function beforeFilter(Event $event)
 	{
-		$this->Auth->allow(['index', 'view', 'display']);
+		$this->Auth->allow(['index', 'view', 'display','login', 'logout']);
 	}
 	
 	public function isAuthorized($user)
