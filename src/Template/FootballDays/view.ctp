@@ -17,7 +17,6 @@
 		] );
 		?>
 		</div>
-		<h5><?= h($footballDay->date) ?></h5>
 	</div>
 </div>
 <div class="related row">
@@ -25,12 +24,22 @@
 <div class="actions columns large-2 medium-3">
     <h3><?= __('MENU') ?></h3>
     <ul class="side-nav">
+     	<li><?php echo $this->Html->link(__('El meu perfil'), ['controller' => 'Users','action' => 'view', $this->request->session()->read('Auth.User.id')]) ?></li>        
     	<li><?= $this->Html->link(__('Apostar'), ['controller' => 'MatchBets', 'action' => 'add', $footballDay->id])?></li>    
         <li><?= $this->Html->link(__('Apostes usuaris'), ['controller' => 'MatchBets', 'action' => 'weeklyBets', $footballDay->id ]) ?></li>
+        <li><?= $this->Html->link(__('Tots els usuaris'), ['controller'=>'Users', 'action' => 'index']) ?> </li>
     </ul>
 </div>
 
 	<div class="column large-10 medium-9">
+			<h5>
+			<?php 
+				echo 'Jornada '.$footballDay->number.' - ';  
+				$originalDate =  $footballDay->date;
+				$newDate = date("d/m/Y", strtotime($originalDate));
+				echo  $newDate; 
+			?>
+			</h5>
 			<?php
 				if (isset($yesterday)) {
 					echo $this->Html->link(__('Anterior'), ['controller' => 'FootballDays', 'action' => 'view', $yesterday->id]);

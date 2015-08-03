@@ -27,9 +27,11 @@ class UsersTable extends Table
         $this->displayField('name');
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
-        $this->hasMany('MatchBets', [
+        $this->hasMany('Bets', [
             'foreignKey' => 'user_id'
         ]);
+        
+
     }
 
     /**

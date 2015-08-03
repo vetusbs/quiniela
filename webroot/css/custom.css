@@ -25,3 +25,38 @@ th.rotate > div > span {
 {
     display: inline-block;
 }
+
+.check-1 {      
+   background-image: url('../img/1.png'); 
+}
+.check-2 {      
+   background-image: url('../img/2.png'); 
+}
+.check-x{      
+   background-image: url('../img/x.png'); 
+}
+
+.check-1:checked {      
+   background-image: url('../img/1-pressed.png'); 
+}
+.check-2:checked {      
+   background-image: url('../img/2-pressed.png'); 
+}
+.check-x:checked{      
+   background-image: url('../img/x-pressed.png'); 
+}
+
+
+.check-1, .check-2, .check-x {  
+   background-repeat: no-repeat;
+   width: 18px;
+   height: 18px;
+   margin: 0 !important;
+   padding: 0;
+   border: 1px solid #f0240f !important;
+   -moz-appearance: none; /* not working */
+   -webkit-appearance: none;
+   -ms-appearance: none; /*not working */
+   -o-appearance: none;
+   appearance: none;
+}

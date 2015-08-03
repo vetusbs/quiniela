@@ -37,12 +37,21 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <body>
     <header>
         <div class="header-title">
-            <span><?= $this->fetch('title') ?></span>
-                    <div><?php echo __("Penya quinialistica LC");?></div>
+            <span><?php echo __("Penya quinialistica LC");?></span>
+                    <span><?php //$this->fetch('title') ?></span>
         </div>
         <div class="header-help">
             <?php echo $this->Html->image('logoQuinielaGrande.png', array('alt' => 'CakePHP'));?>
-            <?php echo $this->Html->link(__('Sortir'), ['controller' => 'Users', 'action' => 'logout']) ?>
+            <?php 
+            	$userId = $this->request->session()->read('Auth.User.id');
+            	if ($userId != null) {
+            		echo '<span>'.$this->Html->link(__($this->request->session()->read('Auth.User.name')), 
+            				['controller' => 'Users','action' => 'view', $userId]).'</span>';
+            		echo '<span>'.$this->Html->link(__('Sortir'), ['controller' => 'Users', 'action' => 'logout']).'</span>';
+            	} else {
+            		echo $this->Html->link(__('Entrar'), ['controller' => 'Users', 'actino' => 'login']);
+            	}
+            ?>
             
         </div>
     </header>

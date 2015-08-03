@@ -12,8 +12,8 @@
             echo $this->Form->input('name');
             echo $this->Form->input('email');
             echo $this->Form->input('password');
-            echo $this->Form->input('pagat');
-            echo $this->Form->input('rol');
+            //echo $this->Form->input('pagat');
+            echo $this->Form->input('role', array('type'=>'hidden', 'value'=>'user'));
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

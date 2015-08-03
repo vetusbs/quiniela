@@ -22,7 +22,7 @@ class User extends Entity
         'email' => true,
         'password' => true,
         'pagat' => true,
-        'rol' => true,
+        'role' => true,
         'bets' => true,
     ];
     

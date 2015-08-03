@@ -16,19 +16,26 @@ class UsersController extends AppController
 	{
 	
 		// The owner of an article can edit and delete it
-		if (in_array($this->request->action, ['edit', 'delete','login'])) {
+		if (in_array($this->request->action, ['edit','login'])) {
 			$paramUserId = (int)$this->request->params['pass'][0];
 			if ($user['id'] == $paramUserId) {
 				return true;
 			}
+		} else if (in_array($this->request->action, ['index','view'])) {
+			return true;
 		}
 	
 		return parent::isAuthorized($user);
 	}
 	
 	public function beforeFilter(Event $event)
-	{		
+	{	
+		if ($this->Auth->user('id') && in_array($this->request->action, ['add','login'])) {
+			$this->redirect(['controller' => 'Users' , 'action' => 'index']);
+		} else {
+		}
 		$this->Auth->allow(array('add','logout', 'login'));
+		
 	}
 	
 	public function login()
@@ -110,9 +117,10 @@ class UsersController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->data);
+
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                //return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }

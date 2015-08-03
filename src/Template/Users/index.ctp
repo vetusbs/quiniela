@@ -1,21 +1,18 @@
 <div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
+    <h3><?= __('MENU') ?></h3>
     <ul class="side-nav">
-        <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
+    	<li><?= $this->Html->link(__('La Jornada'), ['controller' => 'FootballDays', 'action' => 'today'])?></li>    
     </ul>
 </div>
 <div class="users index large-10 medium-9 columns">
-    <table cellpadding="0" cellspacing="0">
+    <table cellpadding="0" cellspacing="0" style="width:auto;">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('id') ?></th>
-            <th><?= $this->Paginator->sort('name') ?></th>
+            <th><?= $this->Paginator->sort('Identificador') ?></th>
+            <th><?= $this->Paginator->sort('Nom') ?></th>
             <th><?= $this->Paginator->sort('email') ?></th>
-            <th><?= $this->Paginator->sort('pasword') ?></th>
             <th><?= $this->Paginator->sort('pagat') ?></th>
-            <th><?= $this->Paginator->sort('created') ?></th>
-            <th><?= $this->Paginator->sort('modified') ?></th>
-            <th class="actions"><?= __('Actions') ?></th>
+            <th class="actions"><?= __('Accions') ?></th>
         </tr>
     </thead>
     <tbody>
@@ -24,14 +21,10 @@
             <td><?= $this->Number->format($user->id) ?></td>
             <td><?= h($user->name) ?></td>
             <td><?= h($user->email) ?></td>
-            <td><?= h($user->pasword) ?></td>
             <td><?= $this->Number->format($user->pagat) ?></td>
-            <td><?= h($user->created) ?></td>
-            <td><?= h($user->modified) ?></td>
             <td class="actions">
-                <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
-                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
-                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                <?= $this->Html->link(__('Veure'), ['action' => 'view', $user->id]) ?>
+                <?= $this->Html->link(__('Editar'), ['action' => 'edit', $user->id]) ?>
             </td>
         </tr>
 

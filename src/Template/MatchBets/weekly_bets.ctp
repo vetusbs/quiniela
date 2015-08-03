@@ -1,7 +1,8 @@
 <div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
+    <h3><?= __('Menu') ?></h3>
  	<ul class="side-nav">
-    	<li><?= $this->Html->link(__('Apostar'), ['controller' => 'MatchBets', 'action' => 'add', $footballDayId]) ?></li>    
+ 	    <li><?= $this->Html->link(__('El meu perfil'), ['controller' => 'Users', 'view' => $this->request->session()->read('Auth.User.id')]) ?></li>    
+    	<li><?= $this->Html->link(__('La jornada'), ['controller' => 'FootballDays', 'action' => 'today']) ?></li>    
         <li><?= $this->Html->link(__('Apostes usuaris'), ['controller' => 'MatchBets', 'action' => 'weeklyBets', $footballDayId]) ?></li>
     </ul>
 </div>
@@ -40,6 +41,7 @@
 		    				break;
 		    			} else {
 		    				echo $bet['goals_local'];
+		    				echo " - ";
 		    				echo $bet['goals_visitor'];
 		    				
 		    				break;
