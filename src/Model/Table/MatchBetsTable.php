@@ -79,7 +79,7 @@ class MatchBetsTable extends Table
     public function getAllBetsBy($footballDay) {
     	    	
     	$subQuery = $this->Bets->find('all', array(
-    			'fields' => array('id' => 'MAX(bets.id)'),
+    			'fields' => array('id' => 'MAX(Bets.id)'),
     			))
     		->where(['football_day_id' => $footballDay])
     		->group('user_id')

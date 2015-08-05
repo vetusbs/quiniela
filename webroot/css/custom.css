@@ -25,7 +25,9 @@ th.rotate > div > span {
 {
     display: inline-block;
 }
-
+.check-0 {      
+   background-image: url('../img/0.png'); 
+}
 .check-1 {      
    background-image: url('../img/1.png'); 
 }
@@ -35,7 +37,13 @@ th.rotate > div > span {
 .check-x{      
    background-image: url('../img/x.png'); 
 }
+.check-m{      
+   background-image: url('../img/m.png'); 
+}
 
+.check-0:checked {      
+   background-image: url('../img/0-pressed.png'); 
+}
 .check-1:checked {      
    background-image: url('../img/1-pressed.png'); 
 }
@@ -44,6 +52,9 @@ th.rotate > div > span {
 }
 .check-x:checked{      
    background-image: url('../img/x-pressed.png'); 
+}
+.check-m:checked{      
+   background-image: url('../img/m-pressed.png'); 
 }
 
 

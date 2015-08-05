@@ -37,7 +37,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <body>
     <header>
         <div class="header-title">
-            <span><?php echo __("Penya quinialistica LC");?></span>
+            <span>
+            <?php  
+            	echo $this->Html->link(__("Penya quinialistica LC"), ['controller' => 'FootballDays', 'action' => 'today'])	;
+            ?>
+            </span>
                     <span><?php //$this->fetch('title') ?></span>
         </div>
         <div class="header-help">
@@ -49,7 +53,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             				['controller' => 'Users','action' => 'view', $userId]).'</span>';
             		echo '<span>'.$this->Html->link(__('Sortir'), ['controller' => 'Users', 'action' => 'logout']).'</span>';
             	} else {
-            		echo $this->Html->link(__('Entrar'), ['controller' => 'Users', 'actino' => 'login']);
+            		echo $this->Html->link(__('Entrar'), ['controller' => 'Users', 'action' => 'login']);
             	}
             ?>
             

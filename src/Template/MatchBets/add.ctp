@@ -37,10 +37,10 @@
 				echo $this->Form->radio(
 				    $counter.'.goals_local',
 				    [
-				        ['value' => '0', 'text' => '', 'class' => 'check-1'],
+				        ['value' => '0', 'text' => '', 'class' => 'check-0'],
 				        ['value' => '1', 'text' => '', 'class' => 'check-1'],
 				        ['value' => '2', 'text' => '', 'class' => 'check-2'],
-				    	['value' => '3', 'text' => '', 'class' => 'check-1'],	
+				    	['value' => '3', 'text' => '', 'class' => 'check-m'],	
 				    ]
 				); 
 				echo '</div>';
@@ -49,10 +49,10 @@
 				echo $this->Form->radio(
 				    $counter.'.goals_visitor',
 				    [
-				        ['value' => '0', 'text' => '', 'class' => 'check-1'],
+				        ['value' => '0', 'text' => '', 'class' => 'check-0'],
 				         ['value' => '1', 'text' => '', 'class' => 'check-1'],
 				        ['value' => '2', 'text' => '', 'class' => 'check-2'],
-				    	['value' => '3', 'text' => '', 'class' => 'check-1'],	
+				    	['value' => '3', 'text' => '', 'class' => 'check-m'],	
 				    ]
 				); 
 				echo '</div>';
