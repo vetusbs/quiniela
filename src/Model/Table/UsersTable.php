@@ -58,7 +58,7 @@ class UsersTable extends Table
             ->allowEmpty('pagat');
             
         $validator->add('role', 'inList', [
-                'rule' => ['inList', ['admin', 'author']],
+                'rule' => ['inList', ['admin', 'author','user']],
                 'message' => 'Please enter a valid role'
             ]);
 
