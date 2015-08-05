@@ -17,9 +17,13 @@
     </thead>
     <tbody>
     <?php foreach ($footballDays as $footballDay): ?>
+    <?php 
+    $date = $footballDay->date;
+   	$date = $this->Time->format($date, 'd/M/Y')
+    ?>	
         <tr>
             <td><?= $this->Number->format($footballDay->number) ?></td>
-            <td><?= h($footballDay->date) ?></td>
+            <td><?= h($date) ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'view', $footballDay->id]) ?>
             </td>

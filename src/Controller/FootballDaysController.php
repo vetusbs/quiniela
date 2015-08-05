@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\I18n\Time;
 /**
  * FootballDays Controller
  *
@@ -11,7 +11,7 @@ use App\Controller\AppController;
  */
 class FootballDaysController extends AppController {
 	public $uses = array (
-			'Team' 
+			'Team' , 'Time'
 	);
 	public function isAuthorized($user) {
 		if (in_array ( $this->request->action, [ 
