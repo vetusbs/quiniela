@@ -9,9 +9,9 @@
     <fieldset>
         <legend><?= __('Add User') ?></legend>
         <?php
-            echo $this->Form->input('name');
-            echo $this->Form->input('email');
-            echo $this->Form->input('password');
+            echo $this->Form->input('name',array('label'=>__('Nom')));
+            echo $this->Form->input('email',array('label'=>__('email')));
+            echo $this->Form->input('password',array('label'=>__('password')));
             //echo $this->Form->input('pagat');
             echo $this->Form->input('role', array('type'=>'hidden', 'value'=>'user'));
         ?>

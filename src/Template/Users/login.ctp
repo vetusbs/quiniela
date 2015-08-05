@@ -7,6 +7,10 @@
         <?= $this->Form->input('email') ?>
         <?= $this->Form->input('password') ?>
     </fieldset>
-<?= $this->Form->button(__('Login')); ?>
+<?= $this->Form->button(__('Login'),array( 'class' => 'button')); ?>
+<?php
+echo $this->Html->link(__("Registrar-se"), array('controller' => 'Users','action'=> 'add'), array( 'class' => 'button'))
+?>
+
 <?= $this->Form->end() ?>
 </div>
