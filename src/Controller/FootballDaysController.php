@@ -130,7 +130,8 @@ class FootballDaysController extends AppController {
 		}
 		$this->loadModel ( 'Teams' );
 		$teams = $this->Teams->find ( 'list', [ 
-				'limit' => 200 
+				'limit' => 200 ,
+				'order' => 'name'
 		] );
 		$this->set ( 'teams', $teams );
 		$this->set ( compact ( 'footballDay' ) );
