@@ -10,7 +10,6 @@
     <table cellpadding="0" cellspacing="0">
     <thead>
         <tr>
-            <th><?= $this->Paginator->sort('season') ?></th>
             <th><?= $this->Paginator->sort('number') ?></th>
             <th><?= $this->Paginator->sort('date') ?></th>
             <th class="actions"><?= __('Actions') ?></th>
@@ -19,14 +18,10 @@
     <tbody>
     <?php foreach ($footballDays as $footballDay): ?>
         <tr>
-            <td><?= $this->Number->format($footballDay->id) ?></td>
+            <td><?= $this->Number->format($footballDay->number) ?></td>
             <td><?= h($footballDay->date) ?></td>
-            <td><?= h($footballDay->created) ?></td>
-            <td><?= h($footballDay->modified) ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'view', $footballDay->id]) ?>
-                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $footballDay->id]) ?>
-                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $footballDay->id], ['confirm' => __('Are you sure you want to delete # {0}?', $footballDay->id)]) ?>
             </td>
         </tr>
 

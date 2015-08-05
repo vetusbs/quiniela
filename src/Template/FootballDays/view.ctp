@@ -24,10 +24,13 @@
 <div class="actions columns large-2 medium-3">
     <h3><?= __('MENU') ?></h3>
     <ul class="side-nav">
-     	<li><?php echo $this->Html->link(__('El meu perfil'), ['controller' => 'Users','action' => 'view', $this->request->session()->read('Auth.User.id')]) ?></li>        
-    	<li><?= $this->Html->link(__('Apostar'), ['controller' => 'MatchBets', 'action' => 'add', $footballDay->id])?></li>    
+    	<li><?= $this->Html->link(__('Apostar'), ['controller' => 'MatchBets', 'action' => 'add', $footballDay->id])?></li>
+    	    	<li><?= $this->Html->link(__('Totes les jornades'), ['controller' => 'FootballDays', 'action' => 'index', $footballDay->id])?></li>    
+    	    
         <li><?= $this->Html->link(__('Apostes usuaris'), ['controller' => 'MatchBets', 'action' => 'weeklyBets', $footballDay->id ]) ?></li>
         <li><?= $this->Html->link(__('Tots els usuaris'), ['controller'=>'Users', 'action' => 'index']) ?> </li>
+             	<li><?php echo $this->Html->link(__('El meu perfil'), ['controller' => 'Users','action' => 'view', $this->request->session()->read('Auth.User.id')]) ?></li>        
+        
     </ul>
 </div>
 
