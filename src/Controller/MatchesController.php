@@ -11,6 +11,16 @@ use App\Controller\AppController;
 class MatchesController extends AppController
 {
 
+	public function isAuthorized($user)
+	{
+		// The owner of an article can edit and delete it
+		if (in_array($this->request->action, ['edit'])) {
+				return true;
+		}
+	
+		return parent::isAuthorized($user);
+	}
+	
     /**
      * Index method
      *

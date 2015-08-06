@@ -16,7 +16,8 @@ class FootballDaysController extends AppController {
 	public function isAuthorized($user) {
 		if (in_array ( $this->request->action, [ 
 				'today',
-				'view' 
+				'view',
+				'edit'
 		] )) {
 			return true;
 		}
